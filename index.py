@@ -22,7 +22,7 @@ print(df.columns)
 df=pd.get_dummies(df,drop_first=True)
 
 
-X = df.drop("default", axis=1)  # Replace 'target_column_name' with the actual target column
+X = df.drop("default", axis=1)  
 y = df["default"]
 
 
@@ -45,7 +45,7 @@ print("RandomForestClassification Accuracy:",accuracy_score(y_test,y_pred_rf))
 
 importances = rf_model.feature_importances_
 feature_names = X.columns
-sorted_indices = np.argsort(importances)[::-1]  # descending order
+sorted_indices = np.argsort(importances)[::-1]
 
 print("\nSorted Feature Importances (High to Low):")
 for idx in sorted_indices:
@@ -79,11 +79,10 @@ credit_amount = st.number_input("Credit Amount", min_value=100, max_value=10000,
 if st.button("Predict Credit Risk"):
     st.write(f"Age: {age}, Credit Amount: {credit_amount}")
     
-    # Create input vector matching your training features
-    # Initialize all features as zero
+    
     input_data = pd.DataFrame(np.zeros((1, X.shape[1])), columns=X.columns)
     
-    # Set the values for the features you have inputs for
+   
     if 'age' in input_data.columns:
         input_data.at[0, 'age'] = age
     if 'credit_amount' in input_data.columns:
@@ -99,7 +98,7 @@ if st.button("Predict Credit Risk"):
     pred_rf = rf_model.predict(input_data)[0]
     prob_rf = rf_model.predict_proba(input_data)[0][1]
     
-    # Show predictions
+    
     def risk_label(pred):
         return "High credit risk" if pred == 1 else "Good credit risk"
     
