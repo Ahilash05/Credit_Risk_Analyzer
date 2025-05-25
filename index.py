@@ -89,7 +89,7 @@ if st.button("Predict Credit Risk"):
         input_data.at[0, 'credit_amount'] = credit_amount
     
     
-    
+
     # Prediction with LOGISTIC REGRESSION
     pred_logreg = model.predict(input_data)[0]
     prob_logreg = model.predict_proba(input_data)[0][1] 
