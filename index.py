@@ -12,7 +12,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import cross_val_score
 
 
-df = pd.read_csv("synthetic_german_credit.csv")
+df = pd.read_csv("german_credit.csv")
 
 df.head()
 print(df.shape)
